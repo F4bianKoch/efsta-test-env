@@ -1,0 +1,1 @@
+docker run -p 5618:5618 efsta-test-env
