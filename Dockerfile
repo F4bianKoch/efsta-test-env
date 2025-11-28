@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM python:3.12-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -17,13 +17,10 @@ COPY installer/*.zip /opt/app/
 RUN unzip *.zip && \
     chmod +x install.sh
 
-# Build argument for service user
-ARG SERVICE_USER=USER
-
 # Run the installer
 RUN ./install.sh
 
 # Expose required port
 EXPOSE 5618
 
-CMD ["/bin/bash", "run.sh"]
+CMD ["/opt/app/run.sh"]
